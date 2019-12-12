@@ -1,21 +1,5 @@
 from inputs import Day_6 as inp
 
-# inp = """COM)B
-# B)C
-# C)D
-# D)E
-# E)F
-# B)G
-# G)H
-# D)I
-# D)Z
-# Z)Y
-# Y)R
-# E)J
-# J)K
-# K)L
-# K)YOU
-# I)SAN"""
 
 class Tree:
 
@@ -25,10 +9,10 @@ class Tree:
         self.children = []
 
     def __str__(self):
-        return f"{self.name} --> \n"
+        return f"{self.name}, {len(self.children)}"
 
     def __repr__(self):
-        return f"{self.name} --> \n"
+        return f"{self.name}, {len(self.children)}"
 
     @property
     def is_terminal(self):
@@ -60,8 +44,8 @@ class Tree:
 
     def move(self, origin, dest):
 
-        orig = set(self.to_dest(origin)) # - 2
-        dest = set(self.to_dest(dest, orbits=[])) # - 2
+        orig = set(self.to_dest(origin))
+        dest = set(self.to_dest(dest, orbits=[]))
         import pdb;pdb.set_trace()
         diff = len(dest.difference(orig)) + len(orig.difference(dest)) - 2
         return diff

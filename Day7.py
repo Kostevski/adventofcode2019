@@ -1,4 +1,4 @@
-from inputs import Day_5 as inp
+from inputs import Day_7 as inp
 
 
 class Intcode:
@@ -7,6 +7,7 @@ class Intcode:
         self.input = list(map(int, inp.split(",")))
         self.ptr = 0
         self.halt = False
+        self.message = None
         self.run()
 
     def advance(self, steps):
@@ -64,8 +65,8 @@ class Intcode:
         self.advance(2)
 
     def op_4(self):
-        message = self.input[self.input[self.ptr + 1]]
-        print(f"Output: {message}")
+        self.message = self.input[self.input[self.ptr + 1]]
+        print(f"Output: {self.message}")
         self.advance(2)
 
     def op_5(self):
@@ -112,7 +113,8 @@ class Intcode:
 
 
 def main():
-    Intcode()
+    for i in range(5):
+        Intcode()
 
 
 if __name__ == "__main__":
